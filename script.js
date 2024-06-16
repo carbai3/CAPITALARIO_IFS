@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function initializeGrid() {
-      const totalCells = 100;
+      const totalCells = 117;
       let html = '';
       for (let i = 1; i <= totalCells; i++) {
           html += `<div class="cell" id="cell${i}"></div>`;
