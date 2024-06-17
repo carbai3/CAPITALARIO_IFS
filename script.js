@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const cells = document.querySelectorAll('.cell');
       cells.forEach(cell => {
           cell.addEventListener('click', function() {
-              toggleCellOpacity(cell);
-              saveCellOpacities();
+              togglecellOpacity1(cell);
+              savecellOpacities1();
               updateCounter();
           });
       });
 
-      loadCellOpacities();
+      loadcellOpacities1();
       updateCounter();
   }
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
   initializeGrid();
 });
 
-function toggleCellOpacity(cell) {
+function togglecellOpacity1(cell) {
   if (cell.style.opacity === '0' || cell.style.opacity === '') {
       cell.style.opacity = '0';
   } else {
@@ -41,25 +41,25 @@ function toggleCellOpacity(cell) {
   }
 }
 
-function saveCellOpacities() {
-  const cellOpacities = {};
+function savecellOpacities1() {
+  const cellOpacities1 = {};
   const cells = document.querySelectorAll('.cell');
 
   cells.forEach(cell => {
-      cellOpacities[cell.id] = cell.style.opacity;
+      cellOpacities1[cell.id] = cell.style.opacity;
   });
 
-  localStorage.setItem('cellOpacities', JSON.stringify(cellOpacities));
+  localStorage.setItem('cellOpacities1', JSON.stringify(cellOpacities1));
 }
 
-function loadCellOpacities() {
-  const cellOpacities = JSON.parse(localStorage.getItem('cellOpacities'));
+function loadcellOpacities1() {
+  const cellOpacities1 = JSON.parse(localStorage.getItem('cellOpacities1'));
 
-  if (cellOpacities) {
+  if (cellOpacities1) {
       const cells = document.querySelectorAll('.cell');
       cells.forEach(cell => {
-          if (cellOpacities[cell.id]) {
-              cell.style.opacity = cellOpacities[cell.id];
+          if (cellOpacities1[cell.id]) {
+              cell.style.opacity = cellOpacities1[cell.id];
           }
       });
   }
@@ -78,11 +78,11 @@ function updateCounter() {
 
 // Event listener para guardar el estado al salir de la página
 window.addEventListener('beforeunload', function() {
-  saveCellOpacities();
+  savecellOpacities1();
 });
 
 // Event listener para cargar el estado al cargar la página
 window.addEventListener('load', function() {
-  loadCellOpacities();
+  loadcellOpacities1();
   updateCounter();
 });
